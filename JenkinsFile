@@ -10,7 +10,7 @@ pipeline {
 	  stages {
         stage('Building Jar'){
             steps{
-                   sh 'cd userAuthJWT && sudo docker build -f userAuthJWT/Dockerfile  .'
+                   sh 'sudo docker build -f userAuthJWT/Dockerfile  .'
 			     //sh 'sudo mvn -f userAuthJWT/pom.xml clean install pmd:pmd'
 				 //	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
                 }
