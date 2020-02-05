@@ -1,0 +1,19 @@
+ properties([
+  buildDiscarder(logRotator(numToKeepStr: '1')),
+  disableConcurrentBuilds(),
+])
+pipeline {
+	options {
+        disableConcurrentBuilds()
+      }
+    agent any
+	  stages {
+        stage('Building Jar'){
+            steps{
+                 //  sh 'cd order-service && sudo docker build -t image_of_order_service  .'
+			     sh 'sudo mvn -f userAuthJWT/pom.xml clean install pmd:pmd'
+				 //	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
+                }
+        }
+      }
+}
