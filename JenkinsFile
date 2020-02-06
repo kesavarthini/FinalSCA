@@ -8,12 +8,9 @@ pipeline {
       }
     agent any
 	  stages {
-        stage('Building Jar'){
-            steps{
-                   sh 'sudo docker build -f userAuthJWT/Dockerfile  .'
-			     //sh 'sudo mvn -f userAuthJWT/pom.xml clean install pmd:pmd'
-				 //	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
-                }
+          stage('Build') {
+        sh 'mvn -B -V -U -e clean package'
+    }
         }
       }
 }
